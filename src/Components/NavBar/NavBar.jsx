@@ -1,58 +1,34 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { FoodContext } from "../AuthContext/AuthContext";
-import { Alert } from "./../Alert/Alert";
+import { FoodContext } from "../../AuthContext/AuthContext";
+import { Alert } from "../../Alert/Alert";
+import "./navbar.css";
 
 const NavBar = () => {
   const { user, SignOutUser } = useContext(FoodContext);
 
   const navItems = (
     <>
-      <NavLink className={" hover:rounded-md hover:px-2 hover:py-1 "} to={"/"}>
+      <NavLink className="px-3 py-2 rounded-lg" to={"/"}>
         Home
       </NavLink>
-      <NavLink
-        className={" hover:rounded-md hover:px-2 hover:py-1 "}
-        to={"/availablefoods"}
-      >
+      <NavLink className="px-3 py-2 rounded-lg" to={"/availablefoods"}>
         Available Foods
       </NavLink>
 
       {user && (
         <>
-          <NavLink
-            className={" hover:rounded-md hover:px-2 hover:py-1 "}
-            to={"/myFood"}
-          >
-            My Food
+          <NavLink className="px-3 py-2 rounded-lg" to={"/addfood"}>
+            Add Food
           </NavLink>
-          <NavLink
-            className={" hover:rounded-md hover:px-2 hover:py-1 "}
-            to={"/managefood"}
-          >
+          <NavLink className="px-3 py-2 rounded-lg" to={"/managefood"}>
             Manage My Food
           </NavLink>
-          <NavLink
-            className={" hover:rounded-md hover:px-2 hover:py-1 "}
-            to={"/foodrequest"}
-          >
+          <NavLink className="px-3 py-2 rounded-lg" to={"/foodrequest"}>
             My Food Request
           </NavLink>
         </>
       )}
-
-      {/* <NavLink
-        className={" hover:rounded-md hover:px-2 hover:py-1 "}
-        to={"/about"}
-      >
-        About
-      </NavLink> */}
-      {/* <NavLink
-        className={`bg-color1 rounded-md px-2 py-1 text-white`}
-        to={"/subscription"}
-      >
-        Subscribe Now
-      </NavLink> */}
     </>
   );
   // handleSignOut
@@ -121,17 +97,11 @@ const NavBar = () => {
               </div>
             </div>
           ) : (
-            <div className="space-x-4">
-              <NavLink
-                className={" hover:rounded-md hover:px-2 hover:py-1 "}
-                to={"/login"}
-              >
+            <div className="">
+              <NavLink className="px-3 py-2 rounded-lg" to={"/login"}>
                 Login
               </NavLink>
-              <NavLink
-                className={" hover:rounded-md hover:px-2 hover:py-1 "}
-                to={"/register"}
-              >
+              <NavLink className="px-3 py-2 rounded-lg" to={"/register"}>
                 Register
               </NavLink>
             </div>
@@ -147,13 +117,13 @@ export default NavBar;
 // : (
 //   <>
 //     <NavLink
-//       className={" hover:rounded-md hover:px-2 hover:py-1 "}
+//
 //       to={"/login"}
 //     >
 //       Login
 //     </NavLink>
 //     <NavLink
-//       className={" hover:rounded-md hover:px-2 hover:py-1 "}
+//
 //       to={"/register"}
 //     >
 //       Register

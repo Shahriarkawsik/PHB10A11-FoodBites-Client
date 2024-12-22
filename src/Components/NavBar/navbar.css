@@ -1,0 +1,5 @@
+a.active {
+  font-weight: bold;
+  transition: all;
+  background-color: rgb(165, 164, 164);
+}
