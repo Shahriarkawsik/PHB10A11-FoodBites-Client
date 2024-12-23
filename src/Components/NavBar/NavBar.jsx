@@ -71,17 +71,17 @@ const NavBar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost Nothing sm:text-2xl lg:text-2xl font-JosefinSans uppercase tracking-wider"
+            className="btn btn-ghost hover:bg-[rgba(255, 193, 7, 0.5)] Nothing sm:text-2xl lg:text-4xl font-Rochester tracking-wider"
           >
             FoodBites
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden font-Poppins lg:flex">
           <ul className="menu menu-horizontal items-center px-1 gap-7 text-xl ">
             {navItems}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end font-Poppins">
           {user ? (
             <div className="relative group">
               <img

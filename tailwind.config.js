@@ -14,6 +14,12 @@ export default {
         Rochester: "Rochester",
         Poppins: "Poppins",
       },
+      fontSize: {
+        45: "45px",
+      },
+      lineHeight: {
+        56: "56px",
+      },
     },
   },
   plugins: [require("daisyui")],
