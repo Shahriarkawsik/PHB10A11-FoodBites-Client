@@ -17,6 +17,7 @@ const AvailableFoodCard = () => {
         </p>
         <div>
           {/* <Link to={`/food/${_id}`}> */}
+          {/* Demo */}
           <Link to={`/foodDetails`}>
             <button className="text-color4 underline font-semibold  leading-8">
               View Details
