@@ -1,41 +1,43 @@
 import { Link } from "react-router-dom";
 import BGImg from "../../assets/11.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { useContext } from "react";
+import { FoodContext } from "../../AuthContext/AuthContext";
+import axios from "axios";
+import { useAxiosSecure } from "../../Axios/useAxiosSecure";
+
 const AddFood = () => {
+  const { user } = useContext(FoodContext);
+  const secure = useAxiosSecure();
   const handleAddFood = (event) => {
     event.preventDefault();
+
     const form = event.target;
-    const name = form.name.value;
-    const chef = form.chef.value;
-    const price = form.price.value;
-    const supplier = form.supplier.value;
-    const taste = form.taste.value;
-    const category = form.category.value;
-    const details = form.details.value;
-    const photo = form.photo.value;
-    const coffeeDetails = {
+    const name = form.foodName.value;
+    const img = form.foodURL.value;
+    const qtn = form.quantity.value;
+    const loc = form.location.value;
+    const expr = form.expireDate.value;
+    // const status = form.foodStatus.value;
+    const additional_note = form.notes.value;
+
+    const foodDetails = {
       name,
-      chef,
-      price,
-      supplier,
-      taste,
-      category,
-      details,
-      photo,
+      img,
+      qtn,
+      loc,
+      expr,
+      additional_note,
+      donator_img: user?.photoURL,
+      donator_name: user?.displayName,
+      donator_email: user?.email,
     };
 
-    fetch("http://localhost:5000/items", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(coffeeDetails),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-    event.target.reset();
+    // console.log(foodDetails);
+    secure.post(`/food`, foodDetails).then((response) => {
+      console.log(response.data);
+      // add
+    });
   };
   return (
     <section
@@ -53,7 +55,7 @@ const AddFood = () => {
           Add New Food
         </h1>
 
-        <div className="bg-[rgb(244, 243, 240)] shadow-2xl">
+        <div className="bg-[rgb(244, 243, 240)] rounded-xl shadow-2xl">
           <form
             onSubmit={handleAddFood}
             className="card-body grid grid-cols-1 lg:grid-cols-2"
@@ -66,7 +68,7 @@ const AddFood = () => {
                 </span>
               </label>
               <input
-                name="name"
+                name="foodName"
                 type="text"
                 placeholder="Enter food name"
                 className="input input-bordered"
@@ -81,7 +83,7 @@ const AddFood = () => {
                 </span>
               </label>
               <input
-                name="chef"
+                name="foodURL"
                 type="url"
                 placeholder="Enter food image url"
                 className="input input-bordered"
@@ -96,7 +98,7 @@ const AddFood = () => {
                 </span>
               </label>
               <input
-                name="price"
+                name="quantity"
                 type="number"
                 placeholder="Enter food quantity in gram (minimum 100gm)"
                 className="input input-bordered"
@@ -112,7 +114,7 @@ const AddFood = () => {
                 </span>
               </label>
               <input
-                name="supplier"
+                name="location"
                 type="text"
                 placeholder="Enter food supplier"
                 className="input input-bordered"
@@ -127,19 +129,33 @@ const AddFood = () => {
                 </span>
               </label>
               <input
-                name="taste"
-                type="text"
+                name="expireDate"
+                type="date"
                 placeholder="Enter food taste"
                 className="input input-bordered"
                 required
               />
             </div>
+
+            {/* Food Status */}
+            {/* <div className="form-control">
+              <label className="label">
+                <span className="font-semibold text-color3 text-xl ">
+                  Food Status
+                </span>
+              </label>
+              <select name="foodStatus" className="input input-bordered">
+                <option>Available</option>
+              </select>
+            </div> */}
+
+            {/* Notes */}
             <div className="form-control col-span-1 sm:col-span-2">
               <label className="label">
                 <span className="font-medium text-gray-700 text-lg">Notes</span>
               </label>
               <textarea
-                name="summary"
+                name="notes"
                 type="text"
                 cols="30"
                 rows="3"

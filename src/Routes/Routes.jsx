@@ -20,11 +20,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/availablefoods",
+        path: "/availableFoods",
         element: <AvailableFoods />,
       },
       {
-        path: "/availablefoods",
+        path: "/availableFoods",
         element: (
           <PrivateRoutes>
             <AvailableFoods />
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/addfood",
+        path: "/addFood",
         element: (
           <PrivateRoutes>
             <AddFood />
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/managefood",
+        path: "/manageFood",
         element: (
           <PrivateRoutes>
             <ManageFoods />
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/foodrequest",
+        path: "/foodRequest",
         element: (
           <PrivateRoutes>
             <FoodRequest />

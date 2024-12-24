@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "./../Firebase/firebase.init";
+import axios from "axios";
+import { useAxiosCommon } from "../Axios/useAxiosCommon";
 
 export const FoodContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -50,6 +52,17 @@ const AuthContext = ({ children }) => {
   // Current user authentication
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        useAxiosCommon()
+          .post(`/signup`, {
+            name: currentUser?.displayName,
+            email: currentUser?.email,
+          })
+          .then((response) => {
+            // console.log(response.data);
+            window.localStorage.setItem("access-token", response.data.token);
+          });
+      }
       setUser(currentUser);
       setLoading(false);
     });

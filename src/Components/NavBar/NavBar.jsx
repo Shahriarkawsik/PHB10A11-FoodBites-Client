@@ -12,19 +12,19 @@ const NavBar = () => {
       <NavLink className="px-3 py-2 rounded-lg" to={"/"}>
         Home
       </NavLink>
-      <NavLink className="px-3 py-2 rounded-lg" to={"/availablefoods"}>
+      <NavLink className="px-3 py-2 rounded-lg" to={"/availableFoods"}>
         Available Foods
       </NavLink>
 
       {user && (
         <>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/addfood"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/addFood"}>
             Add Food
           </NavLink>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/managefood"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/manageFood"}>
             Manage My Food
           </NavLink>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/foodrequest"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/foodRequest"}>
             My Food Request
           </NavLink>
         </>
