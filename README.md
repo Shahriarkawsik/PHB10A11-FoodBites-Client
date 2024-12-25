@@ -2,7 +2,7 @@
 
 ## Purpose
 
-FoodBites is a user-friendly platform designed to explore and showcase delicious recipes and culinary delights. It aims to provide a seamless browsing experience for food enthusiasts, offering easy access to recipes, food reviews, and a vibrant community of food lovers.
+FoodBites is a food-sharing platform dedicated to reducing food waste and helping those in need. It enables users to donate surplus food and organize events to support underprivileged communities. Logged-in users can create food donation listings, and other users can request to receive these donations, fostering a collaborative and compassionate environment.
 
 ## Live URL
 
