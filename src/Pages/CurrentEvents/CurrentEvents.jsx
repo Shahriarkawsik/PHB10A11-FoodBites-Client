@@ -26,7 +26,8 @@ const CurrentEvents = () => {
       location: "Shelter Center, Uptown",
       date: "2024-12-29",
       time: "9:00 AM - 1:00 PM",
-      image: "winter-drive-image.jpg",
+      image:
+        "https://s3.amazonaws.com/tiph-wp-production/wp-content/uploads/2018/06/12200218/publicserviceshealthday_2018.jpg",
     },
     {
       title: "New Year’s Eve Food Festival",
@@ -34,7 +35,8 @@ const CurrentEvents = () => {
       location: "City Square, Downtown",
       date: "2024-12-31",
       time: "5:00 PM - 10:00 PM",
-      image: "food-festival-image.jpg",
+      image:
+        "https://madreshoy.com/wp-content/uploads/2019/12/cena-navidad.jpg",
     },
     {
       title: "Community Breakfast Gathering",
@@ -43,7 +45,8 @@ const CurrentEvents = () => {
       location: "Community Kitchen, Eastside",
       date: "2024-12-28",
       time: "8:00 AM - 11:00 AM",
-      image: "breakfast-gathering-image.jpg",
+      image:
+        "https://www.eatthis.com/wp-content/uploads/sites/4/2020/06/dinner-party.jpg",
     },
     {
       title: "Food Bank Volunteering Event",
@@ -52,7 +55,8 @@ const CurrentEvents = () => {
       location: "Central Food Bank, Midtown",
       date: "2024-12-27",
       time: "1:00 PM - 5:00 PM",
-      image: "volunteer-event-image.jpg",
+      image:
+        "https://www.thenation.com/wp-content/uploads/2020/12/food-drive-tx-2020-ss-img.jpg",
     },
     {
       title: "Family Food Giveaway",
@@ -61,16 +65,8 @@ const CurrentEvents = () => {
       location: "Community Church, Westside",
       date: "2024-12-29",
       time: "2:00 PM - 6:00 PM",
-      image: "family-giveaway-image.jpg",
-    },
-    {
-      title: "Soup Kitchen Service",
-      description:
-        "Cook and serve warm meals to the elderly in the neighborhood.",
-      location: "Elderly Center, Northside",
-      date: "2024-12-28",
-      time: "12:00 PM - 3:00 PM",
-      image: "soup-kitchen-service.jpg",
+      image:
+        "https://assets.entrepreneur.com/content/3x2/2000/20151123135742-thanksgiving-dinner-family-holiday.jpeg",
     },
   ];
 
