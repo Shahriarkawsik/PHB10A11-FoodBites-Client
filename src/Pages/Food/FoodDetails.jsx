@@ -1,18 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
+import RequestFoodModal from "../../Modals/RequestFoodModal";
+import { FoodContext } from "../../AuthContext/AuthContext";
 
 const FoodDetails = () => {
+  const { user } = useContext(FoodContext);
   const { id } = useParams();
   const [food, setFood] = useState("");
   const secure = useAxiosSecure();
-
   useEffect(() => {
     secure.get(`/food/${id}`).then((response) => {
       setFood(response.data.data);
     });
   }, []);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleRequestClick = () => setIsModalOpen(true);
+  const handleModalClose = () => setIsModalOpen(false);
+  
+  const handleRequestSubmit = (requestData) => {
+    console.log("Request Submitted:", requestData);
+    // Send requestData to the server using axios or fetch
+  };
+
   const {
     _id,
     name,
@@ -86,10 +99,20 @@ const FoodDetails = () => {
 
       {/* Request Button */}
       <div className="text-center my-6">
-       
-        <button className="bg-color4 text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-yellow-400">
+        <button
+          onClick={handleRequestClick}
+          className="bg-color4 text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-yellow-400"
+        >
           Request
         </button>
+        {/* Request Modal */}
+        <RequestFoodModal
+          food={food}
+          user={user}
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          onSubmit={handleRequestSubmit}
+        />
       </div>
     </div>
   );

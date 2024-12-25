@@ -20,17 +20,17 @@ const FeaturedFoodCard = ({ featuredFood }) => {
 
   return (
     <div
-      data-aos="fade-up"
-      data-aos-duration="1000"
+      // data-aos="fade-up"
+      // data-aos-duration="1000"
       className="border rounded-xl space-y-6 font-Poppins bg-[#f8fafa]"
     >
-      <figure className="h-[250px]">
+      <figure >
         <img
-          data-aos="zoom-in"
-          data-aos-duration="1000"
+          // data-aos="zoom-in"
+          // data-aos-duration="1000"
           src={img}
           alt=""
-          className="rounded-xl rounded-b-none"
+          className="rounded-xl rounded-b-none w-full h-[280px]"
         />
       </figure>
       <div className="space-y-3 p-3">

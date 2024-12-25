@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAxiosCommon } from "./../../Axios/useAxiosCommon";
 
 export const responsive = {
   superLargeDesktop: {
@@ -20,12 +21,11 @@ export const responsive = {
   },
 };
 export const BannerItems = () => {
+  const common = useAxiosCommon();
   const [bannerItems, setBannerItems] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BASE_URL}/movieBanner`)
-      .then((response) => response.json())
-      .then((data) => setBannerItems(data));
+    common.get(`/food`).then((response) => setBannerItems(response.data.data));
   }, []);
   return bannerItems;
 };
