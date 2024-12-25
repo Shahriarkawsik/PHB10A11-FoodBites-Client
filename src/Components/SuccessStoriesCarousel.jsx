@@ -45,7 +45,7 @@ const SuccessStoriesCarousel = () => {
   return (
     <section className="bg-gradient-to-r from-yellow-50 to-orange-100 py-16 font-Poppins space-y-10">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold text-color4 mb-8">
+        <h2 className="text-2xl sm:text-4xl font-bold text-color4 mb-8">
           Inspiring Success Stories
         </h2>
         <div className="relative">
@@ -84,12 +84,12 @@ const SuccessStoriesCarousel = () => {
         </div>
       </div>
       <div className="w-11/12 lg:w-4/5 mx-auto space-y-5">
-        <h2 className="text-4xl font-bold text-color4 mb-8">
+        <h2 className="text-2xl sm:text-4xl font-bold text-color4 mb-8">
           Frequently Asked Questions
         </h2>
         <div className="collapse collapse-plus shadow-xl border-b-4 bg-white border-color4">
           <input type="radio" name="my-accordion-3" defaultChecked />
-          <p className="collapse-title text-color2 text-xl font-medium">
+          <p className="collapse-title text-color2 sm:text-xl font-medium">
             Who can receive food at a food pantry or meal program?
           </p>
           <div className="collapse-content text-color3">
@@ -102,7 +102,7 @@ const SuccessStoriesCarousel = () => {
         </div>
         <div className="collapse collapse-plus shadow-xl border-b-4 bg-white border-color4">
           <input type="radio" name="my-accordion-3" />
-          <p className="collapse-title text-color2 text-xl font-medium">
+          <p className="collapse-title text-color2 sm:text-xl font-medium">
             What is the difference between a food bank and food pantry?
           </p>
           <div className="collapse-content text-color3">
@@ -117,7 +117,7 @@ const SuccessStoriesCarousel = () => {
         </div>
         <div className="collapse collapse-plus shadow-xl border-b-4 bg-white border-color4">
           <input type="radio" name="my-accordion-3" />
-          <p className="collapse-title text-color2 text-xl font-medium">
+          <p className="collapse-title text-color2 sm:text-xl font-medium">
             What is it like to visit a food distribution for the first time?
           </p>
           <div className="collapse-content text-color3">

@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Project Info */}
           <div>
-            <h2 className="lg:text-4xl text-color2 font-semibold mb-4 font-Rochester">
+            <h2 className=" text-4xl sm:text-45 lg:text-4xl text-color2 font-semibold mb-4 font-Rochester">
               FoodBites
             </h2>
             <p className="text-sm">

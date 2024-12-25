@@ -116,7 +116,7 @@ const AvailableFoods = () => {
         </form>
       </div>
       {/* Sort button */}
-      <div className="text-end">
+      <div className="w-11/12 lg:w-4/5 mx-auto text-end">
         <button
           disabled={flag}
           onClick={handleSortByExpireDate}
@@ -124,7 +124,7 @@ const AvailableFoods = () => {
             flag
               ? "bg-gray-400 text-gray-200"
               : "bg-color4 hover:bg-yellow-500 text-white"
-          } px-10 py-2 rounded-lg text-xl font-bold `}
+          } px-5 sm:px-10 py-2 rounded-lg sm:text-xl font-bold `}
         >
           {flag ? "Already Sorted" : "Sort by Expire Date"}
         </button>

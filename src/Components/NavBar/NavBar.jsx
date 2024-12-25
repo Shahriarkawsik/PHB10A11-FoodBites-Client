@@ -71,7 +71,7 @@ const NavBar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost hover:bg-[rgba(255, 193, 7, 0.5)] Nothing sm:text-2xl lg:text-4xl font-Rochester tracking-wider"
+            className="btn btn-ghost hover:bg-[rgba(255, 193, 7, 0.5)] text-2xl sm:text-45 lg:text-4xl font-Rochester tracking-wider"
           >
             FoodBites
           </Link>

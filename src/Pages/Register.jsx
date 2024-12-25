@@ -71,7 +71,9 @@ const Register = () => {
   }, [pathname]);
   return (
     <section className="w-1/2 mx-auto space-y-6 py-6">
-      <h1 className="text-5xl font-bold text-center">Register Now</h1>
+      <h1 className="text-3xl sm:text-5xl font-bold text-center text-color1">
+        Register Now
+      </h1>
       <form onSubmit={handleRegister} className="space-y-4">
         {/* Username */}
         <label className="input input-bordered flex items-center gap-2">
@@ -150,7 +152,7 @@ const Register = () => {
         </label>
 
         {/* Submit */}
-        <label className="input input-bordered flex items-center gap-2 bg-blue-600">
+        <label className="input input-bordered flex items-center gap-2 bg-color4">
           <input
             type="submit"
             className="grow text-2xl text-white font-semibold"

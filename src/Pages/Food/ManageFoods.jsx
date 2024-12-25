@@ -72,7 +72,7 @@ const ManageFoods = () => {
           <table className="table">
             {/* table head */}
             <thead>
-              <tr className="text-xl text-color2 text-center">
+              <tr className="sm:text-xl text-color2 text-center">
                 <th>Id</th>
                 <th>Food Name</th>
                 <th>Food Quantity</th>
@@ -89,7 +89,7 @@ const ManageFoods = () => {
                   className="text-center hover:bg-color4.05"
                 >
                   <th>{id + 1}</th>
-                  <td className="text-color2 text-base font-semibold ">
+                  <td className="text-color2 sm:text-base font-semibold ">
                     {manageFood.name}
                   </td>
                   <td>{manageFood.qtn} gm</td>
