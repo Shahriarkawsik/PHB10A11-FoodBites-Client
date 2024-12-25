@@ -5,6 +5,8 @@ import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { FoodContext } from "../../AuthContext/AuthContext";
 import { Link } from "react-router-dom";
 import DeleteModals from "../../Modals/DeleteModals";
+import Loading from "./../../Loading/Loading";
+import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
 const ManageFoods = () => {
   const secure = useAxiosSecure();
   const [manageFoods, setManageFoods] = useState([]);
@@ -13,7 +15,7 @@ const ManageFoods = () => {
   // here will fetch user's created food;
   useEffect(() => {
     if (user) {
-      secure.get(`/manage?email=${user?.email}`).then((response) => {
+      secure.get(`/manage?email=${user.email}`).then((response) => {
         setManageFoods(response.data.data);
       });
     }
@@ -24,14 +26,15 @@ const ManageFoods = () => {
   };
 
   return (
-    <div>
+    <div className="w-11/12 lg:w-4/5 mx-auto font-Poppins my-16">
       {loading ? (
-        "Loading"
+        <Loading />
       ) : (
-        <div className=" border-2 border-color3 rounded-lg p-5">
-          <table className="border w-full">
-            <thead className="text-color1 py-2">
-              <tr className="py-2">
+        <div className="overflow-x-auto border rounded-lg">
+          <table className="table">
+            {/* table head */}
+            <thead>
+              <tr className="text-xl text-color2 text-center">
                 <th>Id</th>
                 <th>Food Name</th>
                 <th>Food Quantity</th>
@@ -40,28 +43,33 @@ const ManageFoods = () => {
                 <th>Action</th>
               </tr>
             </thead>
+            {/* table body */}
             <tbody>
               {manageFoods.map((manageFood, id) => (
-                <tr key={manageFood._id}>
+                <tr
+                  key={manageFood._id}
+                  className="text-center hover:bg-color4.05"
+                >
                   <th>{id + 1}</th>
-                  <td>{manageFood.name}</td>
-                  <td>{manageFood.qtn}</td>
+                  <td className="text-color2 text-base font-semibold ">
+                    {manageFood.name}
+                  </td>
+                  <td>{manageFood.qtn} gm</td>
                   <td>{manageFood.loc}</td>
-                  <td>{manageFood.expr}</td>
+                  <td> {convertedExpireDate(manageFood.expr)}</td>
                   <td className="space-x-2">
                     <Link to={`/updateFood/${manageFood._id}`}>
-                      <button className="p-2 bg-green-400 rounded-sm">
+                      <button className="p-2 bg-color4 hover:bg-yellow-500 text-white rounded-lg">
                         <LuPencil />
                       </button>
                     </Link>
-
                     <button
                       className="p-2 bg-green-400 rounded-sm"
                       // onClick={() => handleDelete(manageFood._id)}
                     >
                       <DeleteModals
                         manageFood={manageFood}
-                        handleDelete={handleDelete}
+                        // handleDelete={handleDelete}
                       />
                     </button>
                     {/* <DeleteModals /> */}

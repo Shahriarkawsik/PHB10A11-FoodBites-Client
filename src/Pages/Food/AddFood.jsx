@@ -3,7 +3,6 @@ import BGImg from "../../assets/11.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useContext } from "react";
 import { FoodContext } from "../../AuthContext/AuthContext";
-import axios from "axios";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { Alert } from "./../../Alert/Alert";
 
@@ -20,7 +19,6 @@ const AddFood = () => {
     const qtn = form.quantity.value;
     const loc = form.location.value;
     const expr = form.expireDate.value;
-    // const status = form.foodStatus.value;
     const additional_note = form.notes.value;
 
     const foodDetails = {
@@ -35,7 +33,6 @@ const AddFood = () => {
       donator_email: user?.email,
     };
 
-    // console.log(foodDetails);
     secure
       .post(`/food`, foodDetails)
       .then((response) => {
@@ -60,7 +57,7 @@ const AddFood = () => {
           <FaArrowLeftLong />
           <p className="font-Rancho text-3xl text-color6">Back to home</p>
         </Link>
-        <h1 className=" text-45 leading-56 text-color1 text-center">
+        <h1 className=" text-45 leading-56 text-color1 font-semibold hover:text-color4 text-center">
           Add New Food
         </h1>
 

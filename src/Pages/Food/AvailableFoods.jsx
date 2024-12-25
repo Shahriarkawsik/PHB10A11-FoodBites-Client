@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import bannerImg from "../../assets/available_food_banner2.jpg";
 import AvailableFoodCard from "../../Components/Food/availableFoodCard";
 import { useAxiosCommon } from "../../Axios/useAxiosCommon";
+import { Alert } from "./../../Alert/Alert";
 
 const AvailableFoods = () => {
   const [availableFoods, setAvailableFoods] = useState([]);
   const [key, setKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const common = useAxiosCommon();
+  const [flag, setFlag] = useState(false); // use it to change "all food" header.
   // Axios
   useEffect(() => {
     common
@@ -31,7 +33,6 @@ const AvailableFoods = () => {
     if (key && sortOrder) {
       url = `/search?key=${key}&sortOrder=${sortOrder}`;
     }
-    // console.log(url);
     common.get(url).then((response) => {
       setAvailableFoods(response.data.data);
     });
@@ -40,6 +41,16 @@ const AvailableFoods = () => {
   const handleSearch = (event) => {
     event.preventDefault();
   };
+
+  const handleSortByExpireDate = () => {
+    const sortedFoods = [...availableFoods].sort(
+      (a, b) => new Date(b.expr) - new Date(a.expr)
+    );
+    setAvailableFoods(sortedFoods);
+    setFlag(true);
+    Alert(true, "Food is sorted");
+  };
+
   return (
     <div className="space-y-10 font-Poppins mb-16">
       {/* Banner */}
@@ -52,16 +63,16 @@ const AvailableFoods = () => {
         }}
         className="flex flex-col items-center justify-center space-y-4 h-[500px]"
       >
-        <h1 className="text-white font-bold lg:text-6xl">
+        <h1 className="text-white hover:text-color4 font-bold lg:text-6xl">
           Taste Our Delicious Best Foods
         </h1>
-        <p className="text-gray-200 text-center max-w-xl">
+        <p className="text-white hover:text-color4 text-center max-w-xl">
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
           humour.
         </p>
         <form onSubmit={handleSearch} className="flex">
-          <label className="input input-bordered outline-none rounded flex items-center gap-2">
+          <label className="input input-bordered outline-none rounded-xl rounded-r-none flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -83,21 +94,41 @@ const AvailableFoods = () => {
           </label>
           <select
             name="sortOrder"
+            className="bg-color4 text-white rounded-r-xl"
             onChange={(e) => {
               setSortOrder(e.target.value);
             }}
           >
-            <option defaultValue={true} value="asc">
+            <option
+              defaultValue={true}
+              value="asc"
+              className="bg-white text-color4 "
+            >
               ASC
             </option>
-            <option value="desc">DSC</option>
-            {/* <option value="desc">DSC</option> */}
+            <option value="desc" className="bg-white text-color4 ">
+              DSC
+            </option>
           </select>
         </form>
       </div>
+      {/* Sort button */}
+      <div className="text-end">
+        <button
+          disabled={flag}
+          onClick={handleSortByExpireDate}
+          className={`${
+            flag
+              ? "bg-gray-400 text-gray-200"
+              : "bg-color4 hover:bg-yellow-500 text-white"
+          } px-10 py-2 rounded-lg text-xl font-bold `}
+        >
+          {flag ? "Already Sorted" : "Sort by Expire Date"}
+        </button>
+      </div>
       {/* Available Food Cards */}
       <div className="w-11/12 lg:w-4/5 mx-auto space-y-10">
-        <h1 className="text-center font-bold lg:text-45 text-color1">
+        <h1 className="text-center font-bold lg:text-45 text-color1 hover:text-color4">
           All Foods
         </h1>
         {/* Food Cards */}

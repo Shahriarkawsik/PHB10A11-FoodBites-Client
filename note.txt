@@ -8,3 +8,9 @@ additional_note,
 donator_img ,
 donator_name,
 donator_email
+
+
+
+  <button className="bg-color4 hover:bg-yellow-500 text-white px-10 py-2 rounded-lg text-xl font-bold">
+    View Details
+  </button>

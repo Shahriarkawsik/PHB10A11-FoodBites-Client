@@ -19,14 +19,14 @@ const AvailableFoodCard = ({ availableFood }) => {
   } = availableFood;
   return (
     <div
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      className="border rounded-xl space-y-3 font-Poppins bg-[#f8fafa] hover:scale-105 transition-all"
+      // data-aos="fade-up"
+      // data-aos-duration="1000"
+      className="border rounded-xl rounded-tr-[250px] space-y-3 font-Poppins bg-[#f8fafa] hover:scale-105 transition-all"
     >
       <figure className="h-[250px] w-full">
         <img
-          data-aos="zoom-in"
-          data-aos-duration="1000"
+          // data-aos="zoom-in"
+          // data-aos-duration="1000"
           src={img}
           alt=""
           className="rounded-tr-full rounded-bl-full rounded-b-none w-full h-full"

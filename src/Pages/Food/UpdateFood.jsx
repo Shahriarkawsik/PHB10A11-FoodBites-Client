@@ -1,10 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import BGImg from "../../assets/11.png";
 import { useContext, useEffect, useState } from "react";
 import { FoodContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
+import { Alert } from "./../../Alert/Alert";
 
 const UpdateFood = () => {
   const { user } = useContext(FoodContext);
@@ -12,6 +13,7 @@ const UpdateFood = () => {
   const [food, setFood] = useState(null);
   const { id } = useParams();
   const secure = useAxiosSecure();
+  const navigate = useNavigate();
   // fetch my desire food which you want to update(get from ManageFood page.)
   useEffect(() => {
     secure.get(`/food/${id}`).then((response) => {
@@ -44,9 +46,16 @@ const UpdateFood = () => {
     };
 
     // console.log(foodDetails);
-    secure.put(`/food/${id}`, foodDetails).then((response) => {
-      console.log(response.data);    
-    });
+    secure
+      .put(`/food/${id}`, foodDetails)
+      .then((response) => {
+        Alert(true, response.data.message);
+        form.reset();
+        navigate("/food");
+      })
+      .catch((error) => {
+        Alert(false, error.message);
+      });
   };
   const dateFormatter = (date) => {
     const convertedDate = new Date(date);
@@ -66,13 +75,13 @@ const UpdateFood = () => {
             backgroundSize: "100% 100%",
           }}
         >
-          <div className="w-11/12 lg:w-9/12 mx-auto font-Poppins">
+          <div className="w-11/12 lg:w-9/12 mx-auto font-Poppins space-y-6">
             <Link to={"/"} className="my-12 flex items-center gap-5">
               <FaArrowLeftLong />
               <p className="font-Rancho text-3xl text-color6">Back to home</p>
             </Link>
-            <h1 className=" text-45 leading-56 text-color1 text-center">
-              Add New Food
+            <h1 className=" text-45 leading-56 text-color1 font-semibold hover:text-color4 text-center">
+              Update Food
             </h1>
 
             <div className="bg-[rgb(244, 243, 240)] rounded-xl shadow-2xl">
@@ -188,7 +197,7 @@ const UpdateFood = () => {
                   <input
                     type="submit"
                     value="Update Food"
-                    className="btn bg-color4 text-white bg-color7 text-2xl font-Rancho"
+                    className="btn bg-color4 hover:bg-yellow-500 text-white bg-color7 text-2xl font-Rancho"
                   />
                 </div>
               </form>
