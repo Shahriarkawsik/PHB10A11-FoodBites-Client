@@ -11,7 +11,6 @@ const AvailableFoods = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const common = useAxiosCommon();
   const [flag, setFlag] = useState(false); // use it to change "all food" header.
-  // Axios
   useEffect(() => {
     common
       .get(`/food`)
