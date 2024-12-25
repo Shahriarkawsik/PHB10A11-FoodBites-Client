@@ -49,27 +49,35 @@ const AddFood = () => {
     <section
       style={{
         backgroundImage: `url(${BGImg})`,
-        backgroundSize: "100% 100%",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
+      className="min-h-screen"
     >
-      <div className="w-11/12 lg:w-9/12 mx-auto font-Poppins">
-        <Link to={"/"} className="my-12 flex items-center gap-5">
-          <FaArrowLeftLong />
-          <p className="font-Rancho text-3xl text-color6">Back to home</p>
+      <div className="w-11/12 lg:w-9/12 mx-auto font-Poppins py-8 sm:py-12">
+        {/* Back to home */}
+        <Link to={"/"} className="flex items-center gap-3 mb-8">
+          <FaArrowLeftLong className="text-lg sm:text-xl" />
+          <p className="font-Rancho text-xl sm:text-2xl lg:text-3xl text-color6">
+            Back to home
+          </p>
         </Link>
-        <h1 className=" text-45 leading-56 text-color1 font-semibold hover:text-color4 text-center">
+
+        {/* Page Title */}
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl leading-tight text-color1 font-semibold hover:text-color4 text-center mb-6">
           Add New Food
         </h1>
 
-        <div className="bg-[rgb(244, 243, 240)] rounded-xl shadow-2xl">
+        {/* Form Container */}
+        <div className="bg-[rgb(244,243,240)] rounded-lg shadow-lg p-4 sm:p-8">
           <form
             onSubmit={handleAddFood}
-            className="card-body grid grid-cols-1 lg:grid-cols-2"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             {/* Food Name */}
             <div className="form-control">
               <label className="label">
-                <span className="font-semibold text-color3 text-xl ">
+                <span className="font-medium text-color3 text-lg sm:text-xl">
                   Food Name
                 </span>
               </label>
@@ -84,7 +92,7 @@ const AddFood = () => {
             {/* Food Image URL */}
             <div className="form-control">
               <label className="label">
-                <span className="font-semibold text-color3 text-xl ">
+                <span className="font-medium text-color3 text-lg sm:text-xl">
                   Food Image
                 </span>
               </label>
@@ -96,10 +104,11 @@ const AddFood = () => {
                 required
               />
             </div>
+
             {/* Food Quantity */}
             <div className="form-control">
               <label className="label">
-                <span className="font-semibold  text-color3 text-xl ">
+                <span className="font-medium text-color3 text-lg sm:text-xl">
                   Food Quantity
                 </span>
               </label>
@@ -112,10 +121,11 @@ const AddFood = () => {
                 required
               />
             </div>
-            {/* Food Pickup Location */}
+
+            {/* Pickup Location */}
             <div className="form-control">
               <label className="label">
-                <span className="font-semibold text-color3 text-xl ">
+                <span className="font-medium text-color3 text-lg sm:text-xl">
                   Pickup Location
                 </span>
               </label>
@@ -127,58 +137,47 @@ const AddFood = () => {
                 required
               />
             </div>
-            {/* Expire Date and time */}
+
+            {/* Expire Date */}
             <div className="form-control">
               <label className="label">
-                <span className="font-semibold text-color3 text-xl ">
-                  Expire Date / time
+                <span className="font-medium text-color3 text-lg sm:text-xl">
+                  Expire Date / Time
                 </span>
               </label>
               <input
                 name="expireDate"
                 type="date"
-                placeholder="Enter food taste"
                 className="input input-bordered"
                 required
               />
             </div>
 
-            {/* Food Status */}
-            {/* <div className="form-control">
-              <label className="label">
-                <span className="font-semibold text-color3 text-xl ">
-                  Food Status
-                </span>
-              </label>
-              <select name="foodStatus" className="input input-bordered">
-                <option>Available</option>
-              </select>
-            </div> */}
-
             {/* Notes */}
             <div className="form-control col-span-1 sm:col-span-2">
               <label className="label">
-                <span className="font-medium text-gray-700 text-lg">Notes</span>
+                <span className="font-medium text-gray-700 text-lg sm:text-xl">
+                  Notes
+                </span>
               </label>
               <textarea
                 name="notes"
-                type="text"
-                cols="30"
                 rows="3"
                 style={{ resize: "none" }}
                 placeholder="Write Notes (Minimum 10 characters)"
-                className="rounded-xl border-2 p-3"
+                className="rounded-lg border-2 p-3"
                 minLength={10}
                 maxLength={250}
                 required
               />
             </div>
 
-            <div className="form-control mt-6 col-span-2 ">
+            {/* Submit Button */}
+            <div className="form-control mt-6 col-span-1 sm:col-span-2">
               <input
                 type="submit"
                 value="Add Food"
-                className="btn bg-color4 text-white bg-color7 text-2xl font-Rancho"
+                className="btn bg-color4 text-white text-lg sm:text-xl lg:text-2xl font-Rancho"
               />
             </div>
           </form>

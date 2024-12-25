@@ -4,9 +4,10 @@ import { MdDelete } from "react-icons/md";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { FoodContext } from "../../AuthContext/AuthContext";
 import { Link } from "react-router-dom";
-import DeleteModals from "../../Modals/DeleteModals";
 import Loading from "./../../Loading/Loading";
 import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
+import Swal from "sweetalert2";
+
 const ManageFoods = () => {
   const secure = useAxiosSecure();
   const [manageFoods, setManageFoods] = useState([]);
@@ -22,7 +23,39 @@ const ManageFoods = () => {
   }, []);
 
   const handleDelete = (id) => {
-    secure.delete(`/food/${id}`);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        secure
+          .delete(`/food/${id}`)
+          .then(() => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            // Remove from list
+            setManageFoods((prevFoods) =>
+              prevFoods.filter((food) => food._id !== id)
+            );
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              text: "There was a problem deleting the item.",
+              icon: "error",
+            });
+            console.error("Delete failed:", error);
+          });
+      }
+    });
   };
 
   return (
@@ -30,7 +63,7 @@ const ManageFoods = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="overflow-x-auto border rounded-lg">
+        <div className="overflow-x-auto border rounded-xl">
           <table className="table">
             {/* table head */}
             <thead>
@@ -57,22 +90,18 @@ const ManageFoods = () => {
                   <td>{manageFood.qtn} gm</td>
                   <td>{manageFood.loc}</td>
                   <td> {convertedExpireDate(manageFood.expr)}</td>
-                  <td className="space-x-2">
+                  <td className="space-x-2 flex">
                     <Link to={`/updateFood/${manageFood._id}`}>
                       <button className="p-2 bg-color4 hover:bg-yellow-500 text-white rounded-lg">
-                        <LuPencil />
+                        <LuPencil className="text-2xl" />
                       </button>
                     </Link>
                     <button
-                      className="p-2 bg-green-400 rounded-sm"
-                      // onClick={() => handleDelete(manageFood._id)}
+                      className="p-2 bg-color4 hover:bg-yellow-500 text-white rounded-lg"
+                      onClick={() => handleDelete(manageFood._id)}
                     >
-                      <DeleteModals
-                        manageFood={manageFood}
-                        // handleDelete={handleDelete}
-                      />
+                      <MdDelete className="text-2xl" />
                     </button>
-                    {/* <DeleteModals /> */}
                   </td>
                 </tr>
               ))}

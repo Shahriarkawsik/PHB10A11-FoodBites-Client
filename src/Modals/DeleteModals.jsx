@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdDelete } from "react-icons/md";
 import Modal from "react-modal";
 
 // Bind Modal to your app element (for accessibility)
@@ -17,8 +18,9 @@ const DeleteModals = ({ manageFood, handleDelete }) => {
   };
   return (
     <div>
-      <h1>React Modal Example</h1>
-      <button onClick={openModal}>Open Modal</button>
+      <button className="text-white" onClick={openModal}>
+        <MdDelete />
+      </button>
 
       <Modal
         isOpen={modalIsOpen}
@@ -40,9 +42,44 @@ const DeleteModals = ({ manageFood, handleDelete }) => {
           },
         }}
       >
-        <p>Are you sure to delete food ?</p>
-        <button onClick={handleOk}>Ok</button>
-        <button onClick={closeModal}>Cancel</button>
+        <div className="space-y-4">
+          {/* 
+          
+          Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
+
+          */}
+          <p>Are you sure to delete food ?</p>
+          <div className="space-x-3">
+            <button
+              className="bg-color4 hover:bg-yellow-500 text-white px-6 py-2 rounded-lg text-xl font-bold"
+              onClick={handleOk}
+            >
+              Ok
+            </button>
+            <button
+              className="bg-color4 hover:bg-yellow-500 text-white px-6 py-2 rounded-lg text-xl font-bold"
+              onClick={closeModal}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </Modal>
     </div>
   );
