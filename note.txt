@@ -1,0 +1,10 @@
+_id,
+name,
+img,
+qtn,
+loc,
+expr,
+additional_note,
+donator_img 
+donator_name
+donator_email

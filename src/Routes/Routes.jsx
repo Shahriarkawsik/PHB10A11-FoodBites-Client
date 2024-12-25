@@ -10,12 +10,13 @@ import FoodRequest from "./../Pages/Food/FoodRequest";
 import Login from "../Pages/Login";
 import FoodDetails from "../Pages/Food/FoodDetails";
 import UpdateFood from "../Pages/Food/updateFood";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -41,11 +42,10 @@ const router = createBrowserRouter([
             <FoodDetails />
           </PrivateRoutes>
         ),
-        // loader: ({ params }) =>
-        //   fetch(`${import.meta.env.VITE_BASE_URL}/food/${params.id}`),
       },
+
       {
-        path: "/food/addFood",
+        path: "/addFood",
         element: (
           <PrivateRoutes>
             <AddFood />

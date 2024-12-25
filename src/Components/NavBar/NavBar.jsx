@@ -18,7 +18,7 @@ const NavBar = () => {
 
       {user && (
         <>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/food/addFood"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/addFood"}>
             Add Food
           </NavLink>
           <NavLink className="px-3 py-2 rounded-lg" to={"/manage"}>
