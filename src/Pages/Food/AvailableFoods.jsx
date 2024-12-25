@@ -11,6 +11,8 @@ const AvailableFoods = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const common = useAxiosCommon();
   const [flag, setFlag] = useState(false); // use it to change "all food" header.
+  const [isChangeLayout, setIsChangeLayout] = useState(false);
+  console.log(isChangeLayout);
   useEffect(() => {
     common
       .get(`/food`)
@@ -116,7 +118,13 @@ const AvailableFoods = () => {
         </form>
       </div>
       {/* Sort button */}
-      <div className="w-11/12 lg:w-4/5 mx-auto text-end">
+      <div className="w-11/12 lg:w-4/5 mx-auto flex items-center justify-end gap-2 sm:gap-5">
+        <button
+          onClick={() => setIsChangeLayout(!isChangeLayout)}
+          className="bg-color4 hover:bg-yellow-500 text-white px-3 sm:px-10 py-2 rounded-lg sm:text-xl font-bold"
+        >
+          change layout
+        </button>
         <button
           disabled={flag}
           onClick={handleSortByExpireDate}
@@ -135,7 +143,11 @@ const AvailableFoods = () => {
           All Foods
         </h1>
         {/* Food Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-1 ${
+            isChangeLayout ? "lg:grid-cols-2" : "lg:grid-cols-3"
+          } gap-4`}
+        >
           {availableFoods.map((availableFood) => (
             <AvailableFoodCard
               key={availableFood._id}
