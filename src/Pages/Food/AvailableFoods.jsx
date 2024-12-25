@@ -41,7 +41,8 @@ const AvailableFoods = () => {
     event.preventDefault();
   };
   return (
-    <div className="space-y-10 font-Poppins">
+    <div className="space-y-10 font-Poppins mb-16">
+      {/* Banner */}
       <div
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
@@ -80,11 +81,6 @@ const AvailableFoods = () => {
               placeholder="Search"
             />
           </label>
-          {/* <input
-            type="submit"
-            value="Search"
-            className="input rounded-l-none px-7 bg-color4 text-color1 font-bold text-xl leading-8"
-          /> */}
           <select
             name="sortOrder"
             onChange={(e) => {
@@ -99,7 +95,8 @@ const AvailableFoods = () => {
           </select>
         </form>
       </div>
-      <div className="w-11/12 lg:w-4/5 mx-auto">
+      {/* Available Food Cards */}
+      <div className="w-11/12 lg:w-4/5 mx-auto space-y-10">
         <h1 className="text-center font-bold lg:text-45 text-color1">
           All Foods
         </h1>
@@ -111,7 +108,6 @@ const AvailableFoods = () => {
               availableFood={availableFood}
             />
           ))}
-          {/* <AvailableFoodCard /> */}
         </div>
       </div>
     </div>

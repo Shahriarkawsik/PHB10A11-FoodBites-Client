@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BGImg from "../../assets/11.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useContext } from "react";
 import { FoodContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
+import { Alert } from "./../../Alert/Alert";
 
 const AddFood = () => {
-  
   const { user } = useContext(FoodContext);
   const secure = useAxiosSecure();
+  const navigate = useNavigate();
   const handleAddFood = (event) => {
     event.preventDefault();
 
@@ -35,10 +36,17 @@ const AddFood = () => {
     };
 
     // console.log(foodDetails);
-    secure.post(`/food`, foodDetails).then((response) => {
-      console.log(response.data);
-      // add
-    });
+    secure
+      .post(`/food`, foodDetails)
+      .then((response) => {
+        console.log(response.data.data);
+        Alert(true, response.data.message);
+        form.reset();
+        navigate("/food");
+      })
+      .catch((error) => {
+        Alert(false, error.message);
+      });
   };
   return (
     <section

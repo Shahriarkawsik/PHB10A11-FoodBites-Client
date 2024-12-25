@@ -2,6 +2,7 @@ import React from "react";
 import { GiKitchenScale } from "react-icons/gi";
 import { ImLocation2 } from "react-icons/im";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const AvailableFoodCard = ({ availableFood }) => {
   const {
     _id,
@@ -26,7 +27,7 @@ const AvailableFoodCard = ({ availableFood }) => {
     <div
       data-aos="fade-up"
       data-aos-duration="1000"
-      className="border rounded-xl space-y-3 font-Poppins bg-[#f8fafa]"
+      className="border rounded-xl space-y-3 font-Poppins bg-[#f8fafa] hover:scale-105 transition-all"
     >
       <figure className="h-[250px] w-full">
         <img
@@ -34,7 +35,7 @@ const AvailableFoodCard = ({ availableFood }) => {
           data-aos-duration="1000"
           src={img}
           alt=""
-          className="rounded-xl rounded-b-none w-full h-full"
+          className="rounded-tr-full rounded-bl-full rounded-b-none w-full h-full"
         />
       </figure>
       <div className="space-y-3 p-3">
@@ -66,6 +67,13 @@ const AvailableFoodCard = ({ availableFood }) => {
             <span>Expire Date :</span>
           </h4>
           <p className="text-color3">{convertedExpireDate(expr)}</p>
+        </div>
+        <div className="text-center ">
+          <Link to={`/food/${_id}`}>
+            <button className="bg-color4 text-white px-10 py-2 rounded-lg text-xl font-bold">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
