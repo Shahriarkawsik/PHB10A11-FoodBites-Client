@@ -3,6 +3,7 @@ import { GiKitchenScale } from "react-icons/gi";
 import { ImLocation2 } from "react-icons/im";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { convertedExpireDate } from "../../convertedExpireDate/convertedExpireDate";
 const AvailableFoodCard = ({ availableFood }) => {
   const {
     _id,
@@ -16,13 +17,6 @@ const AvailableFoodCard = ({ availableFood }) => {
     donator_name,
     donator_email,
   } = availableFood;
-  const convertedExpireDate = (expr) => {
-    const date = new Date(expr);
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = date.toLocaleString("en-US", { month: "long" });
-    const year = date.getFullYear(); // Gets year
-    return `${day}-${month}-${year}`; // Combines into desired format
-  };
   return (
     <div
       data-aos="fade-up"
