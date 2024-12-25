@@ -31,8 +31,8 @@ const Banner = () => {
             <div>
               <Link to={`/food`}>
                 <button
-                  // data-aos="zoom-in"
-                  // data-aos-duration="1000"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
                   className="btn backdrop-blur-sm px-8 text-white hover:text-color4 bg-color4 hover:bg-color4.05 border-none"
                 >
                   View Detail

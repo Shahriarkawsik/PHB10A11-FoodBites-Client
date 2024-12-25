@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
 import RequestFoodModal from "../../Modals/RequestFoodModal";
@@ -20,7 +20,7 @@ const FoodDetails = () => {
 
   const handleRequestClick = () => setIsModalOpen(true);
   const handleModalClose = () => setIsModalOpen(false);
-  
+
   const handleRequestSubmit = (requestData) => {
     console.log("Request Submitted:", requestData);
     // Send requestData to the server using axios or fetch
@@ -38,7 +38,10 @@ const FoodDetails = () => {
     donator_name,
     donator_email,
   } = food;
-
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = `Food Details | FoodBites`;
+  }, [pathname]);
   return (
     <div className="bg-gray-100 min-h-screen p-6 font-sans">
       {/* Hero Section */}

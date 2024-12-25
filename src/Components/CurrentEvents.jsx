@@ -71,18 +71,22 @@ const CurrentEvents = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-r from-yellow-50 to-orange-50 py-16 font-Poppins">
+    <section className="bg-gradient-to-r from-orange-100  to-yellow-50 py-16 font-Poppins">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-color1 hover:text-color4 hover: mb-12">
+        <h2 className="text-4xl font-bold text-center text-color1 hover:text-color4 mb-12">
           Current Food Donation Events
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
               key={index}
-              className="bg-white shadow-lg rounded-lg overflow-hidden"
+              className="bg-white shadow-lg rounded-lg overflow-hidden hover:scale-95 transition-all"
             >
               <img
+                data-aos="zoom-in"
+                data-aos-duration="1000"
                 src={event.image}
                 alt={event.title}
                 className="w-full h-48 object-cover"

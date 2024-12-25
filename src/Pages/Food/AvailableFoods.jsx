@@ -3,6 +3,7 @@ import bannerImg from "../../assets/available_food_banner2.jpg";
 import AvailableFoodCard from "../../Components/Food/availableFoodCard";
 import { useAxiosCommon } from "../../Axios/useAxiosCommon";
 import { Alert } from "./../../Alert/Alert";
+import { useLocation } from "react-router-dom";
 
 const AvailableFoods = () => {
   const [availableFoods, setAvailableFoods] = useState([]);
@@ -50,7 +51,10 @@ const AvailableFoods = () => {
     setFlag(true);
     Alert(true, "Food is sorted");
   };
-
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = "Available | FoodBites";
+  }, [pathname]);
   return (
     <div className="space-y-10 font-Poppins mb-16">
       {/* Banner */}

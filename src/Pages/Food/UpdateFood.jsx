@@ -1,9 +1,8 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import BGImg from "../../assets/11.png";
 import { useContext, useEffect, useState } from "react";
 import { FoodContext } from "../../AuthContext/AuthContext";
-import axios from "axios";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { Alert } from "./../../Alert/Alert";
 
@@ -60,7 +59,10 @@ const UpdateFood = () => {
     const convertedDate = new Date(date);
     return convertedDate.toISOString().split("T")[0];
   };
-
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = "Update Food | FoodBites";
+  }, [pathname]);
   return (
     <div>
       {loading ? (

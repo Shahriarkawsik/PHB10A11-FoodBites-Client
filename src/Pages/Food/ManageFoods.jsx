@@ -3,7 +3,7 @@ import { LuPencil } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { FoodContext } from "../../AuthContext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Loading from "./../../Loading/Loading";
 import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
 import Swal from "sweetalert2";
@@ -58,6 +58,11 @@ const ManageFoods = () => {
     });
   };
 
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = "Manage | FoodBites";
+  }, [pathname]);
+
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto font-Poppins my-16">
       {loading ? (
@@ -90,7 +95,7 @@ const ManageFoods = () => {
                   <td>{manageFood.qtn} gm</td>
                   <td>{manageFood.loc}</td>
                   <td> {convertedExpireDate(manageFood.expr)}</td>
-                  <td className="space-x-2 flex">
+                  <td className="space-x-2 flex items-center justify-center">
                     <Link to={`/updateFood/${manageFood._id}`}>
                       <button className="p-2 bg-color4 hover:bg-yellow-500 text-white rounded-lg">
                         <LuPencil className="text-2xl" />

@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import BGImg from "../../assets/11.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FoodContext } from "../../AuthContext/AuthContext";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { Alert } from "./../../Alert/Alert";
@@ -45,6 +45,11 @@ const AddFood = () => {
         Alert(false, error.message);
       });
   };
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = "Add Food | FoodBites";
+  }, [pathname]);
   return (
     <section
       style={{
