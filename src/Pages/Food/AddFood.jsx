@@ -7,6 +7,7 @@ import axios from "axios";
 import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 
 const AddFood = () => {
+  
   const { user } = useContext(FoodContext);
   const secure = useAxiosSecure();
   const handleAddFood = (event) => {

@@ -75,7 +75,7 @@ const FoodDetails = () => {
 
       {/* Request Button */}
       <div className="text-center my-6">
-        <button className="bg-green-600 text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-green-700">
+        <button className="bg-color4 text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-yellow-400">
           Request
         </button>
       </div>

@@ -12,16 +12,16 @@ const NavBar = () => {
       <NavLink className="px-3 py-2 rounded-lg" to={"/"}>
         Home
       </NavLink>
-      <NavLink className="px-3 py-2 rounded-lg" to={"/availableFoods"}>
+      <NavLink className="px-3 py-2 rounded-lg" to={"/food"}>
         Available Foods
       </NavLink>
 
       {user && (
         <>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/addFood"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/food/addFood"}>
             Add Food
           </NavLink>
-          <NavLink className="px-3 py-2 rounded-lg" to={"/manageFood"}>
+          <NavLink className="px-3 py-2 rounded-lg" to={"/manage"}>
             Manage My Food
           </NavLink>
           <NavLink className="px-3 py-2 rounded-lg" to={"/foodRequest"}>
@@ -89,9 +89,12 @@ const NavBar = () => {
                 src={user?.photoURL}
                 alt="photo"
               />
-              <div className="z-10 hidden group-hover:block absolute w-max right-0 top-12 bg-gray-200 p-3 rounded-s-lg space-y-4">
+              <div className="z-10 hidden group-hover:block absolute w-max right-0 top-12 bg-color4.05 p-3 rounded-s-lg space-y-4">
                 <h2>{user?.displayName}</h2>
-                <button className="btn " onClick={() => handleSignOut()}>
+                <button
+                  className="btn bg-color4 hover:bg-yellow-500 text-white"
+                  onClick={() => handleSignOut()}
+                >
                   Log out
                 </button>
               </div>

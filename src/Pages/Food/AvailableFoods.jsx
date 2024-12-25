@@ -1,11 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bannerImg from "../../assets/available_food_banner2.jpg";
 import AvailableFoodCard from "../../Components/Food/availableFoodCard";
+import { useAxiosCommon } from "../../Axios/useAxiosCommon";
 
 const AvailableFoods = () => {
   const [availableFoods, setAvailableFoods] = useState([]);
-  // Load all available foods
+  const [key, setKey] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const common = useAxiosCommon();
   // Axios
+  useEffect(() => {
+    common
+      .get(`/food`)
+      .then((response) => {
+        setAvailableFoods(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    let url = `/search`;
+    if (key) {
+      url = `/search?key=${key}`;
+    }
+    if (sortOrder) {
+      url = `/search?sortOrder=${sortOrder}`;
+    }
+    if (key && sortOrder) {
+      url = `/search?key=${key}&sortOrder=${sortOrder}`;
+    }
+    // console.log(url);
+    common.get(url).then((response) => {
+      setAvailableFoods(response.data.data);
+    });
+  }, [key, sortOrder]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="space-y-10 font-Poppins">
       <div
@@ -25,8 +59,8 @@ const AvailableFoods = () => {
           the majority have suffered alteration in some form, by injected
           humour.
         </p>
-        <form className="flex">
-          <label className="input input-bordered outline-none rounded-r-none flex items-center gap-2">
+        <form onSubmit={handleSearch} className="flex">
+          <label className="input input-bordered outline-none rounded flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -39,13 +73,30 @@ const AvailableFoods = () => {
                 clipRule="evenodd"
               />
             </svg>
-            <input type="text" className="grow" placeholder="Search" />
+            <input
+              onChange={(e) => setKey(e.target.value)}
+              type="text"
+              className="grow"
+              placeholder="Search"
+            />
           </label>
-          <input
+          {/* <input
             type="submit"
             value="Search"
             className="input rounded-l-none px-7 bg-color4 text-color1 font-bold text-xl leading-8"
-          />
+          /> */}
+          <select
+            name="sortOrder"
+            onChange={(e) => {
+              setSortOrder(e.target.value);
+            }}
+          >
+            <option defaultValue={true} value="asc">
+              ASC
+            </option>
+            <option value="desc">DSC</option>
+            {/* <option value="desc">DSC</option> */}
+          </select>
         </form>
       </div>
       <div className="w-11/12 lg:w-4/5 mx-auto">
@@ -54,13 +105,13 @@ const AvailableFoods = () => {
         </h1>
         {/* Food Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* {availableFoods.map((availableFood) => (
+          {availableFoods.map((availableFood) => (
             <AvailableFoodCard
               key={availableFood._id}
               availableFood={availableFood}
             />
-          ))} */}
-          <AvailableFoodCard />
+          ))}
+          {/* <AvailableFoodCard /> */}
         </div>
       </div>
     </div>
