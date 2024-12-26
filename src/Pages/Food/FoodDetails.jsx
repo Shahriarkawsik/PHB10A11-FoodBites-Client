@@ -4,6 +4,7 @@ import { useAxiosSecure } from "../../Axios/useAxiosSecure";
 import { convertedExpireDate } from "./../../convertedExpireDate/convertedExpireDate";
 import RequestFoodModal from "../../Modals/RequestFoodModal";
 import { FoodContext } from "../../AuthContext/AuthContext";
+import { motion } from "framer-motion";
 
 const FoodDetails = () => {
   const { user } = useContext(FoodContext);
@@ -97,12 +98,15 @@ const FoodDetails = () => {
 
       {/* Request Button */}
       <div className="text-center my-6">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
           onClick={handleRequestClick}
           className="bg-color4 text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-yellow-400"
         >
           Request
-        </button>
+        </motion.button>
         {/* Request Modal */}
         <RequestFoodModal
           food={food}

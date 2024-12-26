@@ -5,29 +5,18 @@ import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { convertedExpireDate } from "../../convertedExpireDate/convertedExpireDate";
 
 const FeaturedFoodCard = ({ featuredFood }) => {
-  const {
-    _id,
-    name,
-    img,
-    qtn,
-    loc,
-    expr,
-    additional_note,
-    donator_img,
-    donator_name,
-    donator_email,
-  } = featuredFood;
+  const { name, img, qtn, loc, expr } = featuredFood;
 
   return (
     <div
-      // data-aos="fade-up"
-      // data-aos-duration="1000"
+      data-aos="fade-up"
+      data-aos-duration="1000"
       className="border rounded-xl space-y-6 font-Poppins bg-[#f8fafa]"
     >
-      <figure >
+      <figure>
         <img
-          // data-aos="zoom-in"
-          // data-aos-duration="1000"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
           src={img}
           alt=""
           className="rounded-xl rounded-b-none w-full h-[280px]"

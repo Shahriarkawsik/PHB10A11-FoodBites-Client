@@ -4,6 +4,8 @@ import { ImLocation2 } from "react-icons/im";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { convertedExpireDate } from "../../convertedExpireDate/convertedExpireDate";
+import { motion } from "framer-motion";
+
 const AvailableFoodCard = ({ availableFood }) => {
   const { _id, name, img, qtn, loc, expr } = availableFood;
   return (
@@ -53,9 +55,14 @@ const AvailableFoodCard = ({ availableFood }) => {
         </div>
         <div className="text-center ">
           <Link to={`/food/${_id}`}>
-            <button className="bg-color4 text-white px-10 py-2 rounded-lg text-xl font-bold">
+            <motion.button
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="bg-color4 text-white px-10 py-2 rounded-lg text-xl font-bold"
+            >
               View Details
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>

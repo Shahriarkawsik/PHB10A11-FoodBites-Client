@@ -2,7 +2,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BannerItems, responsive } from "./bannerItems";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const Banner = () => {
   const bannerItems = BannerItems();
   return (
@@ -30,13 +30,16 @@ const Banner = () => {
             </h2>
             <div>
               <Link to={`/food`}>
-                <button
+                <motion.button
                   data-aos="zoom-in"
                   data-aos-duration="1000"
-                  className="btn backdrop-blur-sm px-8 text-white hover:text-color4 bg-color4 hover:bg-color4.05 border-none"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="btn backdrop-blur-sm px-8 text-white  bg-color4 hover:bg-yellow-500 border-none"
                 >
                   View Detail
-                </button>
+                </motion.button>
               </Link>
             </div>
           </div>

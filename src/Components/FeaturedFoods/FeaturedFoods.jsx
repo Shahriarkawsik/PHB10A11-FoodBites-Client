@@ -3,6 +3,7 @@ import { useAxiosCommon } from "../../Axios/useAxiosCommon";
 import Loading from "./../../Loading/Loading";
 import FeaturedFoodCard from "./FeaturedFoodCard";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const FeaturedFoods = () => {
   const common = useAxiosCommon();
@@ -43,9 +44,14 @@ const FeaturedFoods = () => {
       )}
       <div className="text-center">
         <Link to={"/food"}>
-          <button className="bg-color4 text-white px-10 py-2 rounded-lg text-xl font-bold">
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="bg-color4 text-white px-10 py-2 rounded-lg text-xl font-bold"
+          >
             Show All
-          </button>
+          </motion.button>
         </Link>
       </div>
     </div>
