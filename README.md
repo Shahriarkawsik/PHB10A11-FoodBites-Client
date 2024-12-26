@@ -51,7 +51,12 @@ FoodBites is a food-sharing platform dedicated to reducing food waste and helpin
    - [Surge Documentation](https://surge.sh/)
 
 8. **React Icons**: For incorporating scalable vector icons in the design.
+
    - [React Icons Documentation](https://react-icons.github.io/react-icons/)
+
+9. **tanstack/react-query**: For efficient and flexible data fetching and caching in React applications.
+
+   - [tanstack/react-query Documentation](https://tanstack.com/query/latest)
 
 ---
 
