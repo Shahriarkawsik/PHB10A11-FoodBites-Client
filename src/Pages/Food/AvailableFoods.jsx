@@ -66,7 +66,10 @@ const AvailableFoods = () => {
           the majority have suffered alteration in some form, by injected
           humour.
         </p>
-        <form onSubmit={handleSearch} className="flex w-11/12 justify-center">
+        <form
+          onSubmit={handleSearch}
+          className="flex w-11/12 mx-auto justify-center"
+        >
           <label className="input input-bordered outline-none rounded-xl rounded-r-none flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +116,11 @@ const AvailableFoods = () => {
           onClick={() => setIsChangeLayout(!isChangeLayout)}
           className="bg-color4 hover:bg-yellow-500 text-white px-3 sm:px-10 py-2 rounded-lg sm:text-xl font-bold"
         >
-          {isChangeLayout ? <CiGrid31 className="text-2xl text-black" /> : <CiGrid2V className="text-2xl text-black" />}
-          
+          {isChangeLayout ? (
+            <CiGrid31 className="text-2xl text-black" />
+          ) : (
+            <CiGrid2V className="text-2xl text-black" />
+          )}
         </button>
       </div>
       {/* Available Food Cards */}

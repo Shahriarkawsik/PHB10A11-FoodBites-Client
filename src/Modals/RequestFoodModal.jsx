@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { useAxiosSecure } from "../Axios/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "../Alert/Alert";
+import { convertedExpireDate } from "../convertedExpireDate/convertedExpireDate";
 Modal.setAppElement("#root");
 
 const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
@@ -17,11 +18,16 @@ const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
       donator_email: food.donator_email,
       req_date: new Date().toISOString(),
     };
-    secure.put(`/food/${food._id}`, requestData).then((response) => {
-      onClose();
-      Alert(true, response.data.message);
-      navigate("/foodRequest");
-    });
+    secure
+      .put(`/food/${food._id}`, requestData)
+      .then((response) => {
+        onClose();
+        Alert(true, response.data.message);
+        navigate("/foodRequest");
+      })
+      .catch((error) => {
+        Alert(false, error.message);
+      });
   };
 
   return (
@@ -48,7 +54,7 @@ const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
           { label: "Your Email", value: user.email },
           { label: "Request Date", value: new Date().toLocaleString() },
           { label: "Pickup Location", value: food.loc },
-          { label: "Expire Date", value: food.expr },
+          { label: "Expire Date", value: convertedExpireDate(food.expr) },
         ].map((field, index) => (
           <div key={index} className="form-control">
             <label className="label font-medium">{field.label}</label>
