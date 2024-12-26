@@ -36,10 +36,9 @@ const AddFood = () => {
     secure
       .post(`/food`, foodDetails)
       .then((response) => {
-        console.log(response.data.data);
         Alert(true, response.data.message);
         form.reset();
-        navigate("/food");
+        navigate("/manage");
       })
       .catch((error) => {
         Alert(false, error.message);

@@ -42,14 +42,12 @@ const UpdateFood = () => {
       donator_name: user?.displayName,
       donator_email: user?.email,
     };
-
-    // console.log(foodDetails);
     secure
       .put(`/food/${id}`, foodDetails)
       .then((response) => {
         Alert(true, response.data.message);
         form.reset();
-        navigate("/food");
+        navigate("/manage");
       })
       .catch((error) => {
         Alert(false, error.message);

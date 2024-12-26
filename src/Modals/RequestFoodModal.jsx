@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useAxiosSecure } from "../Axios/useAxiosSecure";
-
-Modal.setAppElement("#root"); // Set root for accessibility
+import { useNavigate } from "react-router-dom";
+import { Alert } from "../Alert/Alert";
+Modal.setAppElement("#root");
 
 const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
   const [notes, setNotes] = useState("");
   const secure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const handleRequest = (event) => {
     event.preventDefault();
@@ -16,12 +18,10 @@ const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
       req_date: new Date().toISOString(),
     };
     secure.put(`/food/${food._id}`, requestData).then((response) => {
-      console.log(response.data);
+      onClose();
+      Alert(true, response.data.message);
+      navigate("/foodRequest");
     });
-
-    console.log(requestData);
-    // onSubmit(requestData);
-    // onClose();
   };
 
   return (

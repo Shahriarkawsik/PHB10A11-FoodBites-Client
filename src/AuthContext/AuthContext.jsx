@@ -59,7 +59,6 @@ const AuthContext = ({ children }) => {
             email: currentUser?.email,
           })
           .then((response) => {
-            // console.log(response.data);
             window.localStorage.setItem("access-token", response.data.token);
           });
       }

@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import bannerImg from "../../assets/available_food_banner2.jpg";
 import AvailableFoodCard from "../../Components/Food/availableFoodCard";
 import { useAxiosCommon } from "../../Axios/useAxiosCommon";
-import { Alert } from "./../../Alert/Alert";
 import { useLocation } from "react-router-dom";
+import { CiGrid2V, CiGrid31 } from "react-icons/ci";
 
 const AvailableFoods = () => {
   const [availableFoods, setAvailableFoods] = useState([]);
   const [key, setKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const common = useAxiosCommon();
-  const [flag, setFlag] = useState(false); // use it to change "all food" header.
+  const [flag, setFlag] = useState(false);
   const [isChangeLayout, setIsChangeLayout] = useState(false);
-  console.log(isChangeLayout);
   useEffect(() => {
     common
       .get(`/food`)
@@ -42,15 +41,6 @@ const AvailableFoods = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-  };
-
-  const handleSortByExpireDate = () => {
-    const sortedFoods = [...availableFoods].sort(
-      (a, b) => new Date(b.expr) - new Date(a.expr)
-    );
-    setAvailableFoods(sortedFoods);
-    setFlag(true);
-    Alert(true, "Food is sorted");
   };
   const { pathname } = useLocation();
   useEffect(() => {
@@ -123,18 +113,8 @@ const AvailableFoods = () => {
           onClick={() => setIsChangeLayout(!isChangeLayout)}
           className="bg-color4 hover:bg-yellow-500 text-white px-3 sm:px-10 py-2 rounded-lg sm:text-xl font-bold"
         >
-          change layout
-        </button>
-        <button
-          disabled={flag}
-          onClick={handleSortByExpireDate}
-          className={`${
-            flag
-              ? "bg-gray-400 text-gray-200"
-              : "bg-color4 hover:bg-yellow-500 text-white"
-          } px-5 sm:px-10 py-2 rounded-lg sm:text-xl font-bold `}
-        >
-          {flag ? "Already Sorted" : "Sort by Expire Date"}
+          {isChangeLayout ? <CiGrid31 className="text-2xl text-black" /> : <CiGrid2V className="text-2xl text-black" />}
+          
         </button>
       </div>
       {/* Available Food Cards */}

@@ -15,7 +15,6 @@ const FeaturedFoods = () => {
       .then((response) => {
         let sortedFood = response.data.data.sort((a, b) => b.qtn - a.qtn);
         sortedFood = sortedFood.slice(0, 6);
-        // console.log(sortedFood);
         setFeaturedFoods(sortedFood);
         setLoading(false);
       })
