@@ -21,10 +21,10 @@ const FoodDetails = () => {
   const handleRequestClick = () => setIsModalOpen(true);
   const handleModalClose = () => setIsModalOpen(false);
 
-  const handleRequestSubmit = (requestData) => {
-    console.log("Request Submitted:", requestData);
-    // Send requestData to the server using axios or fetch
-  };
+  // const handleRequestSubmit = (requestData) => {
+  //   console.log("Request Submitted:", requestData);
+  //   // Send requestData to the server using axios or fetch
+  // };
 
   const {
     _id,
@@ -114,7 +114,7 @@ const FoodDetails = () => {
           user={user}
           isOpen={isModalOpen}
           onClose={handleModalClose}
-          onSubmit={handleRequestSubmit}
+          // onSubmit={handleRequestSubmit}
         />
       </div>
     </div>

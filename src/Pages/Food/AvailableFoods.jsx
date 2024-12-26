@@ -57,7 +57,7 @@ const AvailableFoods = () => {
     document.title = "Available | FoodBites";
   }, [pathname]);
   return (
-    <div className="space-y-10 font-Poppins mb-16">
+    <div className="space-y-10 font-Poppins mb-16 overflow-hidden">
       {/* Banner */}
       <div
         style={{
@@ -76,7 +76,7 @@ const AvailableFoods = () => {
           the majority have suffered alteration in some form, by injected
           humour.
         </p>
-        <form onSubmit={handleSearch} className="flex">
+        <form onSubmit={handleSearch} className="flex w-11/12 justify-center">
           <label className="input input-bordered outline-none rounded-xl rounded-r-none flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

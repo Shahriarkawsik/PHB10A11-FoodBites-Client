@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { useAxiosSecure } from "../Axios/useAxiosSecure";
 
 Modal.setAppElement("#root"); // Set root for accessibility
 
-const RequestFoodModal = ({ food, user, isOpen, onClose, onSubmit }) => {
+const RequestFoodModal = ({ food, user, isOpen, onClose }) => {
   const [notes, setNotes] = useState("");
+  const secure = useAxiosSecure();
 
-  const handleFormSubmit = (event) => {
+  const handleRequest = (event) => {
     event.preventDefault();
     const requestData = {
-      foodName: food.name,
-      foodImage: food.img,
-      foodId: food._id,
-      foodDonatorEmail: food.donator_email,
-      foodDonatorName: food.donator_name,
-      userEmail: user.email,
-      requestDate: new Date().toISOString(),
-      pickupLocation: food.loc,
-      expireDate: food.expr,
-      notes,
+      additional_note: notes,
+      donator_email: food.donator_email,
+      req_date: new Date().toISOString(),
     };
-    onSubmit(requestData);
-    onClose();
+    secure.put(`/food/${food._id}`, requestData).then((response) => {
+      console.log(response.data);
+    });
+
+    console.log(requestData);
+    // onSubmit(requestData);
+    // onClose();
   };
 
   return (
@@ -35,7 +35,8 @@ const RequestFoodModal = ({ food, user, isOpen, onClose, onSubmit }) => {
         Request Food
       </h2>
       <form
-        onSubmit={handleFormSubmit}
+        // onSubmit={handleFormSubmit}
+        onSubmit={handleRequest}
         className="space-y-4 items-center gap-4"
       >
         {/* Non-editable Fields */}
