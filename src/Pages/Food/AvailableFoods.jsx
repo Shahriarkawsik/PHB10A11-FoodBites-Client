@@ -18,6 +18,7 @@ const AvailableFoods = () => {
     common
       .get(`/food`)
       .then((response) => {
+        // console.log(response.data);
         setAvailableFoods(response.data.data);
       })
       .catch((error) => {
