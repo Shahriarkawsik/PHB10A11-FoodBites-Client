@@ -35,17 +35,17 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/food" className="hover:underline text-color2">
-                  Foods
+                  Available Foods
                 </Link>
               </li>
               <li>
-                <Link to="/" className="hover:underline text-color2">
-                  About Us
+                <Link to="/manage" className="hover:underline text-color2">
+                  Manage Foods
                 </Link>
               </li>
               <li>
-                <Link to="/" className="hover:underline text-color2">
-                  Contact
+                <Link to="/foodRequest" className="hover:underline text-color2">
+                  Food Request
                 </Link>
               </li>
             </ul>
