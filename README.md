@@ -63,7 +63,7 @@ npm install
 Create a `.env.local` file in the root directory and add:
 
 ```env
-VITE_apiKey= AIzaSyCbySZD93_wrw7WSiT-FVyA4hV3sACNemc
+VITE_apiKey= API KEY
 VITE_authDomain= foodbites-2008e.firebaseapp.com
 VITE_projectId= foodbites-2008e
 VITE_storageBucket= foodbites-2008e.firebasestorage.app
@@ -77,12 +77,6 @@ VITE_measurementId= G-F7FPLKC44
 ```bash
 npm run dev
 ```
-
-## Live URL
-
-- **Firebase Live Demo**: [FoodBites on Firebase](https://foodbites-2008e.web.app)
-- **Surge Live Demo**: [FoodBites on Surge](https://sparkling-cow.surge.sh)
-- **GitHub Repository**: [FoodBites Repository](https://github.com/programming-hero-web-course2/b10a11-client-side-Shahriarkawsik)
 
 ## Key Features
 
@@ -131,5 +125,11 @@ npm run dev
 9. **tanstack/react-query**: For efficient and flexible data fetching and caching in React applications.
 
    - [tanstack/react-query Documentation](https://tanstack.com/query/latest)
+
+## Live URL
+
+- **Firebase Live Link**: [FoodBites on Firebase](https://foodbites-2008e.web.app)
+- **Surge Live Link**: [FoodBites on Surge](https://sparkling-cow.surge.sh)
+- **GitHub Repository**: [FoodBites Repository](https://github.com/Shahriarkawsik/PHB10A11-FoodBites-Client.git)
 
 ---
