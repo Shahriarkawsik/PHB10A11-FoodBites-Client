@@ -4,6 +4,11 @@
 
 FoodBites is a food-sharing platform dedicated to reducing food waste and helping those in need. It enables users to donate surplus food and organize events to support underprivileged communities. Logged-in users can create food donation listings, and other users can request to receive these donations, fostering a collaborative and compassionate environment.
 
+## Screenshots
+
+![Screenshot 1](https://github.com/Shahriarkawsik/PHB10A11-FoodBites-Client/blob/main/src/assets/screenshot/foodbites-p1.png)
+![Screenshot 2](https://github.com/Shahriarkawsik/PHB10A11-FoodBites-Client/blob/main/src/assets/screenshot/foodbites-p2.png)
+
 ## 🛠 Technologies Used
 
 - **Frontend:** TailwindCSS,daisyUI, React.js,
