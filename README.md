@@ -43,9 +43,9 @@ FoodBites is a food-sharing platform dedicated to reducing food waste and helpin
   - mongoose
   - vercel
 
-  ## 🛠 How to Run Locally
+## 🛠 How to Run Locally
 
-  ### 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/programming-hero-web-course2/b10a11-client-side-Shahriarkawsik.git
