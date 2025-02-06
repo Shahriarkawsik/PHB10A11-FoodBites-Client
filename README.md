@@ -6,7 +6,12 @@ FoodBites is a food-sharing platform dedicated to reducing food waste and helpin
 
 ## Screenshots
 
+### Home Page
+
 ![Screenshot 1](https://github.com/Shahriarkawsik/PHB10A11-FoodBites-Client/blob/main/src/assets/screenshot/foodbites-p1.png)
+
+### Available Foods
+
 ![Screenshot 2](https://github.com/Shahriarkawsik/PHB10A11-FoodBites-Client/blob/main/src/assets/screenshot/foodbites-p2.png)
 
 ## 🛠 Technologies Used
